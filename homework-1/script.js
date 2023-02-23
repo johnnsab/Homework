@@ -1,39 +1,38 @@
 // Display the numbers from 10 to 20 on the page in one line separated by commas
 
-function number () {
+function listNumbers (x, y) {
     let numberArray = [];
-    for (i = 1; i <= 20; i++) {    
+    for (let i = x; i <= y; i++) {    
       numberArray.push(i);
     }
-    return numberArray
+    return numberArray.toString()
   }
 
 // Print the squares of numbers from 10 to 20
 
-  function number () {
+  function listNumbersSquare (x, y) {
     let numberSquare = [];
-    for (i = 10; i <= 20; i++) {        
+    for (let i = x; i <= y; i++) {        
       numberSquare.push(i*i);
     }
-    return numberSquare
+    return numberSquare.toString()
   }
 
 //   Display the multiplication table by 7
 
-function number () {
-    const number = 7
-    let numberSquare = [];
-    for (i = 1; i <= 9; i++) {        
-      numberSquare.push(i*number);
-    }
-    return numberSquare
-  }
+function numberMultiplication (number) {
+  let stringSum = '';     
+  for (let i = 1; i <= 10; i++) {       
+    stringSum += `${i} * ${number} = ${i * number}\n`;            
+  } 
+  return stringSum;
+}
 
 //   Find the sum of all integers from 1 to 15
 
-function number () {
+function listSumInteger (x, y) {
     let sum = 0;  
-    for (i = 1; i <= 15; i++) {        
+    for (let i = x; i <= y; i++) {        
       sum += i;    
     }
     return sum
@@ -41,9 +40,9 @@ function number () {
 
 //   Find the product of all integers from 15 to 35
 
-function number () {
+function listMultiplication (x, y) {
     let sum = 1;  
-    for (i = 15; i <= 35; i++) {            
+    for (let i = x; i <= y; i++) {            
       sum *= i;    
     }
     return sum
@@ -51,9 +50,9 @@ function number () {
 
 //   Find the arithmetic mean of all integers from 1 to 500
 
-function number () {
+function averageNumber (x, y) {
     let sum = 0;  
-    for (i = 1; i <= 500; i++) {            
+    for (let i = x; i <= y; i++) {            
       sum += i;
     }
     return sum / i;
@@ -61,9 +60,9 @@ function number () {
 
 //   Output the sum of only even numbers in the range from 30 to 80
 
-function number () {  
+function sumEvenNumbers (x, y) {  
     sum = 0;
-    for (i = 30; i <= 80; i++) {            
+    for (let i = x; i <= y; i++) {            
       if (i % 2 === 0) {
         console.log(i)
         sum += i;  
@@ -74,22 +73,22 @@ function number () {
 
 //   Output all numbers in the range from 100 to 200 multiples of 3
 
-function number () {  
+function divisorByThree (x, y) {  
     let resultArray = [];
-    for (i = 100; i <= 200; i++) {            
+    for (let i = x; i <= y; i++) {            
       if (i % 3 === 0) {
         console.log(i)
         resultArray.push(i)
       } 
     }
-    return resultArray
+    return resultArray.toString()
   }
 
 //   A natural number is given. Find and display all its divisors on the page
 
-function divisors (number) {    
+function allDivisors (number) {    
     let resultArray = [];
-    for (i = 0; i <= number; i++) {                
+    for (let i = 0; i <= number; i++) {                
       if (number % i === 0) {      
         resultArray.push(i)
       } 
@@ -99,9 +98,9 @@ function divisors (number) {
 
 //   Determine the number of its even divisors
 
-function divisors (number) {    
+function amountDivisors (number) {    
     let resultArray = [];
-    for (i = 0; i <= number; i++) {                
+    for (let i = 0; i <= number; i++) {                
       if (number % i === 0) {      
         let sum = i;
         if (sum % 2 === 0) {
@@ -114,9 +113,9 @@ function divisors (number) {
 
 //   Find the sum of its even divisors
 
-function divisors (number) {      
+function sumDivisors (number) {      
     let sum = 0;
-    for (i = 0; i <= number; i++) {                
+    for (let i = 0; i <= number; i++) {                
       if (number % i === 0) {      
         let result = i;
         if (result % 2 === 0) {
@@ -129,10 +128,17 @@ function divisors (number) {
 
 //   Print the complete multiplication table from 1 to 10
 
-function multiplicationTable (number) {      
-    let sumArray = [];
-    for (i = 1; i <= 9; i++) {
-      sumArray.push(number * i)
+function multiplicationTable (number) {
+  let resultArray = [];
+  function numberMultiplication (j) {      
+    let stringSum = '';
+    for (let i = 1; i <= 10; i++) {       
+      stringSum += `${i} * ${j} = ${i * j}\n`;            
     }
-    return sumArray
+    return stringSum
   }
+  for (let i = 1; i <= number; i++) {
+    resultArray.push(numberMultiplication(i))
+  }
+  return resultArray
+}
