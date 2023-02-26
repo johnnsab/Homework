@@ -57,10 +57,12 @@ console.log(listMultiplication(15, 35));
 
 function averageNumber(x, y) {
   let sum = 0;
+  let length = 0;
   for (let i = x; i <= y; i++) {
     sum += i;
+    length++;
   }
-  return sum / (y + 1 - x);
+  return sum / length;
 }
 console.log(averageNumber(10, 500));
 
