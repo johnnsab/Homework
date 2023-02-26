@@ -60,9 +60,9 @@ function averageNumber(x, y) {
   for (let i = x; i <= y; i++) {
     sum += i;
   }
-  return sum / y;
+  return sum / (y + 1 - x);
 }
-console.log(averageNumber(1, 500));
+console.log(averageNumber(10, 500));
 
 //   Output the sum of only even numbers in the range from 30 to 80
 
@@ -105,49 +105,36 @@ console.log(allDivisors(100));
 
 //   Determine the number of its even divisors
 
-function amountDivisors(number) {
+function evenDivisorsNumber(number) {
   let resultArray = [];
   for (let i = 0; i <= number; i++) {
-    if (number % i === 0) {
-      let sum = i;
-      if (sum % 2 === 0) {
-        resultArray.push(i);
-      }
+    if (number % i === 0 && i % 2 === 0) {
+      resultArray.push(i);
     }
   }
   return resultArray.length;
 }
-console.log(amountDivisors(100));
+console.log(evenDivisorsNumber(100));
 
 //   Find the sum of its even divisors
 
-function sumDivisors(number) {
+function evenDivisorsSum(number) {
   let sum = 0;
   for (let i = 0; i <= number; i++) {
-    if (number % i === 0) {
-      let result = i;
-      if (result % 2 === 0) {
-        sum += i;
-      }
+    if (number % i === 0 && i % 2 === 0) {
+      sum += i;
     }
   }
   return sum;
 }
-console.log(sumDivisors(100));
+console.log(evenDivisorsSum(100));
 
 //   Print the complete multiplication table from 1 to 10
 
 function multiplicationTable(number) {
   let resultArray = [];
-  function numbersMultiplication(j) {
-    let stringSum = "";
-    for (let i = 1; i <= 10; i++) {
-      stringSum += `${i} * ${j} = ${i * j}\n`;
-    }
-    return stringSum;
-  }
   for (let i = 1; i <= number; i++) {
-    resultArray.push(numbersMultiplication(i));
+    resultArray.push(numberMultiplication(i));
   }
   return resultArray;
 }
