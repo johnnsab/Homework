@@ -1,17 +1,17 @@
 // Output the numbers from 20 to 30 through the gap using a step of 0.5 (20 20.5 21 21.5….)
 
-function listIntegerFloatNumbers(x, y) {
+function listHalfStepNumbers(x, y) {
   let resultArray = [];
   for (let i = x; i <= y; i += 0.5) {
     resultArray.push(i);
   }
   return resultArray.join(" ");
 }
-console.log(listIntegerFloatNumbers(20, 30));
+console.log(listHalfStepNumbers(20, 30));
 
 // One dollar is worth 27 hryvnias. Output data with the calculation of the cost of 10, 20, 30... 100 dollars
 
-function listSumDollars(x, y) {
+function listExchangeRateTable(x, y) {
   let resultArray = [];
   let price = 27;
   for (let i = x; i <= y; i += 10) {
@@ -19,7 +19,7 @@ function listSumDollars(x, y) {
   }
   return resultArray.toString();
 }
-console.log(listSumDollars(10, 100));
+console.log(listExchangeRateTable(10, 100));
 
 // This is an integer. Output all integers from 1 to 100 whose square does not exceed N numbers
 
@@ -50,11 +50,16 @@ console.log(checkPrimeNumber(13));
 
 // Given some number. Determine whether it is possible to obtain this number by reducing the number 3 to a certain power. (For example, the numbers 9, 81 can be obtained, and 13 cannot be obtained)
 
-function findNumberViaSquare(x) {
-  if (x % 3 === 0) {
-    return "The result of a power of 3";
-  } else {
-    return "Not result of a power of 3";
+function isResultOfExponentiation(x, y) {
+  let sum = 1;
+  for (let i = 0; i <= x; i++) {
+    sum *= y;
+    if (x % y === 0 && sum === x) {
+      return true;
+    }
+  }
+  if (x % y !== 0 || sum !== x) {
+    return false;
   }
 }
-console.log(findNumberViaSquare(27));
+console.log(isResultOfExponentiation(81, 3));
