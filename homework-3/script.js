@@ -26,10 +26,6 @@ function minimumArrayValue(numbers) {
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] < minimumValue) {
       minimumValue = numbers[i];
-    }
-  }
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] === minimumValue) {
       indexMinimumValueVariable = i;
     }
   }
@@ -132,23 +128,18 @@ console.log(multiplicationArrayPositiveElements(dataArray));
 
 // Find the largest among the elements of the array, and set all others to zero
 
-function maximumArrayValueAndResetting(numbers) {
-  let maximumValue = numbers[0];
-  let resultArray = [];
+function maxAndReset(numbers) {
+  const maxValue = Math.max(...numbers);
+  let result = [];
+
   for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] > maximumValue) {
-      maximumValue = numbers[i];
+    let value = numbers[i];
+    if (value !== maxValue) {
+      value = 0;
     }
+    result.push(value);
   }
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] < maximumValue) {
-      numbers[i] = 0;
-      let convertToZeroValue = numbers[i];
-      resultArray.push(convertToZeroValue);
-    } else if (numbers[i] === maximumValue) {
-      resultArray.push(numbers[i]);
-    }
-  }
-  return resultArray;
+
+  return result;
 }
-console.log(maximumArrayValueAndResetting(dataArray));
+console.log(maxAndReset(dataArray));
