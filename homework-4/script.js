@@ -1,14 +1,23 @@
 import users from "./users.json" assert { type: "json" };
-import formatString from "./helpers.js";
+import { formatString } from "./helpers.js";
 
-function getUserInfo(users) {
-  let phoneNumbersArray = users.reduce(function (result, user) {
+function filterUsersByBalance(users) {
+  let phoneNumbersArray = [];
+  users.forEach(function (user) {
     if (formatString(user.balance) > 2000) {
-      result.push(user.phone);
+      phoneNumbersArray.push(user.phone);
     }
-    return result;
-  }, []);
+  });
   return phoneNumbersArray;
 }
 
-console.log(getUserInfo(users));
+function getTotalBalance(users) {
+  let calculateTotalBalance = users.reduce(function (acc, user) {
+    let NumberBalance = formatString(user.balance);
+    return acc + NumberBalance;
+  }, 0);
+  return calculateTotalBalance;
+}
+
+console.log(filterUsersByBalance(users));
+console.log(getTotalBalance(users));
