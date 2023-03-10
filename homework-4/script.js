@@ -1,14 +1,13 @@
 import users from "./users.json" assert { type: "json" };
+import formatString from "./helpers.js";
 
 function getUserInfo(users) {
-  let phoneNumbersArray = [];
-  for (let i = 0; i < users.length; i++) {
-    let deleteMarkDollar = users[i].balance.slice(1);
-    let convertToNumber = Number(deleteMarkDollar.replace(",", ""));
-    if (convertToNumber > 2000) {
-      phoneNumbersArray.push(users[i].phone);
+  let phoneNumbersArray = users.reduce(function (result, user) {
+    if (formatString(user.balance) > 2000) {
+      result.push(user.phone);
     }
-  }
+    return result;
+  }, []);
   return phoneNumbersArray;
 }
 
