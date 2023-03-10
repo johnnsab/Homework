@@ -1,20 +1,20 @@
 import users from "./users.json" assert { type: "json" };
-import { formatString } from "./helpers.js";
+import { convertDollarsToNumber } from "./helpers.js";
 
 function filterUsersByBalance(users) {
-  let phoneNumbersArray = [];
-  users.forEach(function (user) {
-    if (formatString(user.balance) > 2000) {
-      phoneNumbersArray.push(user.phone);
-    }
+  let highBalanceUsers = users.filter(function (user) {
+    return convertDollarsToNumber(user.balance) > 2000;
+  });
+  let phoneNumbersArray = highBalanceUsers.map(function (user) {
+    return user.phone;
   });
   return phoneNumbersArray;
 }
 
 function getTotalBalance(users) {
   let calculateTotalBalance = users.reduce(function (acc, user) {
-    let NumberBalance = formatString(user.balance);
-    return acc + NumberBalance;
+    let numberBalance = convertDollarsToNumber(user.balance);
+    return acc + numberBalance;
   }, 0);
   return calculateTotalBalance;
 }
