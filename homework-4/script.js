@@ -1,13 +1,14 @@
 import users from "./users.json" assert { type: "json" };
 import { convertDollarsToNumber } from "./helpers.js";
 
-function filterUsersByBalance(users) {
-  let highBalanceUsers = users.filter(function (user) {
-    return convertDollarsToNumber(user.balance) > 2000;
-  });
-  let phoneNumbersArray = highBalanceUsers.map(function (user) {
-    return user.phone;
-  });
+function filterUsersByBalance(users, minBalance) {
+  let phoneNumbersArray = users
+    .filter(function (user) {
+      return convertDollarsToNumber(user.balance) > minBalance;
+    })
+    .map(function (user) {
+      return user.phone;
+    });
   return phoneNumbersArray;
 }
 
@@ -19,5 +20,5 @@ function getTotalBalance(users) {
   return calculateTotalBalance;
 }
 
-console.log(filterUsersByBalance(users));
+console.log(filterUsersByBalance(users, 2000));
 console.log(getTotalBalance(users));
