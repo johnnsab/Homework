@@ -83,3 +83,14 @@ function removeCharsFromString(str, charsToRemove) {
   return result;
 }
 console.log(removeCharsFromString(" hello world", ["l", "d"]));
+
+// Implement a recursive function that exponentiates a number.
+// The function accepts 2 arguments: the number to be raised to the power and the power. You cannot use Math.pow() or the ** operator.
+
+function pow(num, degree) {
+  if (degree === 0) {
+    return 1;
+  } else {
+    return num * pow(num, degree - 1);
+  }
+}
