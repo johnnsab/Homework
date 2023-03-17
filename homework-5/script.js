@@ -3,15 +3,19 @@ let arr = ["a", 2, { a: 1 }, ["a", "b"], 1, 9.3, "asdf", true, 8, null, 10];
 // Given an array with elements of different types. Create a function that calculates the arithmetic mean of only the numerical elements of the given array.
 
 function sumNumbers(data) {
-  let sum = 0;
   let count = 0;
-  for (let i = 0; i < data.length; i++) {
-    if (!isNaN(data[i])) {
-      sum += data[i];
-      count++;
-    }
-  }
-  return sum / count;
+  let averageNumber = data
+    .filter(function (value) {
+      if (typeof value === "number" && !isNaN(value)) {
+        count++;
+        return true;
+      }
+    })
+    .reduce(function (sum, currentValue) {
+      return sum + currentValue;
+    }, 0);
+
+  return averageNumber / count;
 }
 console.log(sumNumbers(arr));
 
@@ -67,6 +71,7 @@ function fillTwoDimensionalArray() {
   for (let i = 0; i < masterArrayLength; i++) {
     masterArray.push(fillTheChildArray(i));
   }
+  alert(masterArray);
   return masterArray;
 }
 
@@ -94,3 +99,4 @@ function pow(num, degree) {
     return num * pow(num, degree - 1);
   }
 }
+console.log(pow(5, 4));
