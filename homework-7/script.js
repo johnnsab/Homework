@@ -53,7 +53,4 @@ let user = {
   },
 };
 
-getPasswordFromUser(
-  () => user.loginSuccess(),
-  () => user.loginFail()
-);
+getPasswordFromUser(user.loginSuccess.bind(user), user.loginFail.bind(user));
