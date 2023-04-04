@@ -1,3 +1,4 @@
+// Create 2 functions filterUsersByBalance and getTotalBalance
 import users from "./users.json" assert { type: "json" };
 import { convertDollarsToNumber } from "./helpers.js";
 
