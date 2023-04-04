@@ -33,9 +33,9 @@ Human.prototype.getFullName = function () {
 };
 
 Human.prototype.setFullName = function (fullName) {
-  const fullNameArr = fullName.split(" ");
-  this.name = fullNameArr[0];
-  this.surname = fullNameArr[1];
+  let [name, surname] = fullName.split(" ");
+  this.name = name;
+  this.surname = surname;
 };
 
 // Student constructor function
@@ -48,7 +48,7 @@ Student.prototype = Object.create(Human.prototype);
 Student.prototype.constructor = Student;
 
 Student.prototype.getAverageMark = function () {
-  return this.marks.reduce((acc, val) => acc + val, 0) / this.marks.length;
+  return this.marks.reduce((a, b) => a + b) / this.marks.length;
 };
 
 Student.prototype.getMinMark = function () {
